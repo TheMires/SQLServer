@@ -1,0 +1,28 @@
+CREATE DATABASE db_classificadosA
+
+USE db_classificadosA
+
+CREATE TABLE Usuarios(
+Id INT PRIMARY KEY NOT NULL,
+Nome VARCHAR(50) NOT NULL,
+Usuario VARCHAR(50) NOT NULL,
+Senha VARCHAR(50) NOT NULL,
+Contato VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Anuncios(
+Id INT PRIMARY KEY NOT NULL,
+Titulo VARCHAR(50) NOT NULL,
+Descricao VARCHAR(70) NOT NULL,
+Preco FLOAT NULL,
+Contato VARCHAR(50) NOT NULL,
+FK_Criador INT NOT NULL,
+FOREIGN KEY (FK_Criador) REFERENCES Usuarios (Id)
+)
+
+CREATE TABLE Interessados(
+FK_Interessado INT NOT NULL,
+FK_Anuncio INT NOT NULL,
+FOREIGN KEY (FK_Interessado) REFERENCES Usuarios (Id),
+FOREIGN KEY (FK_Anuncio) REFERENCES Anuncios (Id)
+)
